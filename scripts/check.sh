@@ -7,17 +7,22 @@ for page in "$ROOT/index.html" "$ROOT/futakuchi.html" "$ROOT/futakuchi-caremanag
   test -s "$page"
   grep -qi '<html lang="ja"' "$page"
   grep -qi '<meta name="viewport"' "$page"
-  grep -qi 'noindex' "$page"
 done
 
-grep -q 'Disallow: /' "$ROOT/robots.txt"
+grep -qi 'index,follow' "$ROOT/index.html"
+grep -qi 'index,follow' "$ROOT/futakuchi.html"
+grep -qi 'noindex' "$ROOT/futakuchi-caremanager.html"
+grep -q 'Allow: /' "$ROOT/robots.txt"
+! grep -q 'Disallow: /' "$ROOT/robots.txt"
+! grep -qE '公開前|確認用|仮配置|正式確認前' "$ROOT/futakuchi.html"
+! grep -q 'staff-support.jpg' "$ROOT/futakuchi.html"
 test -s "$ROOT/futakuchi-pamphlet-review.pdf"
 test "$(pdfinfo "$ROOT/futakuchi-pamphlet-review.pdf" | awk '/^Pages:/ {print $2}')" = "2"
 
 node --check "$ROOT/assets/futakuchi-tools.js"
 node --check "$ROOT/assets/futakuchi-config.js"
 
-for image in bathroom open-floor staff-support exercise-room; do
+for image in bathroom open-floor exercise-room; do
   test -s "$ROOT/assets/futakuchi/$image.jpg"
 done
 
