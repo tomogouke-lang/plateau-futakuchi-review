@@ -25,6 +25,9 @@ node --check "$ROOT/assets/futakuchi-config.js"
 for image in bathroom open-floor exercise-room; do
   test -s "$ROOT/assets/futakuchi/$image.jpg"
 done
+for image in exercise-illustration relax-illustration; do
+  test -s "$ROOT/assets/futakuchi/$image.png"
+done
 
 grep -q '1NP2rkayGXamvUf8ocuT5eG2ZE4mcNRVAk_jqCs2gc80' "$ROOT/assets/futakuchi-config.js"
 grep -q 'id="availability"' "$ROOT/futakuchi.html"
