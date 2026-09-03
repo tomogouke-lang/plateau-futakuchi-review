@@ -219,6 +219,7 @@ footer{background:#0E1022;color:#fff;padding:32px 0;font-size:14px;}
 }
 
 @media(max-width:620px){
+  h1,h2,h3{word-break:auto-phrase;overflow-wrap:anywhere;text-wrap:balance;}
   .inner{width:min(100% - 32px,1120px);}
   .hero{padding-block:48px;}
   .hero-grid{gap:40px;}
@@ -242,6 +243,18 @@ footer{background:#0E1022;color:#fff;padding:32px 0;font-size:14px;}
   .contact-row{gap:24px;}
   .breakdown li{display:grid;gap:4px;}
   .breakdown b{text-align:left;}
+	#codes{scroll-margin-top:80px;}
+	#codes .availability-wrap{overflow:visible;}
+	#codes .acceptance-table,#codes .acceptance-table tbody,#codes .acceptance-table tr,#codes .acceptance-table td{display:block;width:100%;}
+	#codes .acceptance-table thead{display:none;}
+	#codes .acceptance-table tr{margin-bottom:12px;overflow:hidden;border:1px solid var(--pds-border);border-radius:12px;background:#fff;}
+	#codes .acceptance-table td{display:grid;grid-template-columns:128px minmax(0,1fr);gap:12px;padding:12px 14px;border:0;border-bottom:1px solid var(--pds-border);}
+	#codes .acceptance-table td:nth-child(2){width:100%;font-weight:400;}
+	#codes .acceptance-table td::before{color:var(--pds-primary);font-weight:900;white-space:nowrap;}
+	#codes .acceptance-table td:nth-child(1)::before{content:"区分";}
+	#codes .acceptance-table td:nth-child(2)::before{content:"内容";}
+	#codes .acceptance-table td:nth-child(3)::before{content:"サービスコード";}
+	#codes .acceptance-table tr:last-child td:not(:last-child){border-bottom:1px solid var(--pds-border);}
 }
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
